@@ -81,7 +81,10 @@
                     right: 46px;
                     top: 0;
                     color: #9B9B9B;
-                    font-size: 14px;
+                    font-size: 158px;
+                    width: 60px;
+                    display: inline-block;
+                    height: 40px;
                 }
             }
         }

@@ -60,7 +60,6 @@
     },
     methods: {
       subimtInfor () {
-        console.log(1)
         this.$router.push({path: '/my/bankList'})
       }
     }
@@ -91,7 +90,7 @@
         }
         .content{
             box-sizing: border-box;
-            padding: 0 46px 0 44px;
+            padding: 20px 46px 0 44px;
             width: 100%;
             background: #fff;
             height: 944px;

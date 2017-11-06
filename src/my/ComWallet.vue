@@ -5,12 +5,16 @@
            <router-link to="/my/myInfor">
                <img class="back" src="./../assets/images/icon_fanhui.png" alt="">
            </router-link>
+
             <span class="tragele" @click="toggle()"></span>
+
             <transition name="fade">
                 <div class="wallet" v-if="toggleFlag">
                     <span class="wallet-toggle"></span>
                     <div class="wallet-item">
-                        <h3>企业钱包</h3>
+                      <router-link to="/my/walletBalance">
+                          <h3>企业钱包</h3>
+                      </router-link>
                     </div>
                     <div class="wallet-item">
                         <h3>张小兵钱包</h3>
@@ -78,7 +82,6 @@
             h2{
                 font-size: 34px;
                 color: #000000;
-                font-family: PingFangSC-Medium;
             }
             .back{
                 position: absolute;
@@ -89,12 +92,12 @@
                 height: 44px;
             }
             .tragele{
-                width: 30px;
-                height: 26px;
+                width: 50px;
+                height: 46px;
                 display: block;
                 position: absolute;
                 left: 452px;
-                top: 32px;
+                top: 22px;
                 background:url("./../assets/images/Triangle.png") no-repeat;
                 background-size: 100% 100%;
             }
@@ -128,6 +131,12 @@
                         color: #FFFFFF;
                     }
                 }
+            }
+            .fade-enter-active, .fade-leave-active{
+                transition: all 0.5s;
+            }
+            .fade-enter, .fade-leave-active{
+                opacity: 0.5;
             }
         }
         .content{
@@ -191,7 +200,6 @@
                     right: 36px;
                     top: 0;
                     color: #9B9B9B;
-                    font-size: 14px;
                 }
 
             }
@@ -199,9 +207,7 @@
                 box-shadow: 0 1px 0 0 #D7D7D7;
                 border-bottom: 1px solid #F5F5F5;
             }
-            .fade-enter-active, .fade-leave-active {
-                transition: opacity .5s;
-            }
+
         }
     }
 </style>

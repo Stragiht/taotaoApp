@@ -23,14 +23,19 @@
              </router-link>
             </div>
             <div class="title border">
-                <i class="icon  bgColor iconfont icon-kuaixun" style="color:  #1CCCFF;"></i>
-                <h3>我的订单</h3>
-                <i class="icon jump iconfont icon-tiaozhuan"></i>
+                <a href="http://183.6.133.107:8050/apps.aptoto.www/views/order/list.html">
+                    <i class="icon  bgColor iconfont icon-kuaixun" style="color:  #1CCCFF;"></i>
+                    <h3>我的订单</h3>
+                    <i class="icon jump iconfont icon-tiaozhuan"></i>
+                </a>
+
             </div>
             <div class="title mb20">
-                <i class="icon  bgColor iconfont icon-xinxi" style="color:  #1CCCFF;"></i>
-                <h3>我的消息</h3>
-                <i class="icon jump iconfont icon-tiaozhuan"></i>
+                <a href="http://183.6.133.107:8050/apps.aptoto.www/views/news/newsmsg.html">
+                    <i class="icon  bgColor iconfont icon-xinxi" style="color:  #1CCCFF;"></i>
+                    <h3>我的消息</h3>
+                    <i class="icon jump iconfont icon-tiaozhuan"></i>
+                </a>
             </div>
             <div class="title border ">
                 <i class="icon  bgColor iconfont icon-huodong" style="color:  #FFD242;"></i>
@@ -48,10 +53,17 @@
                 <i class="icon jump iconfont icon-tiaozhuan"></i>
             </div>
         </div>
+        <V-footer></V-footer>
     </div>
 </template>
 <script>
-    export default {}
+  import VFooter from '@/components/VFooter'
+
+  export default {
+    components: {
+      VFooter
+    }
+  }
 </script>
 <style type="text/less" scoped lang="less">
     .header{
@@ -131,7 +143,7 @@
                 right: 36px;
                 top: 0;
                 color: #9B9B9B;
-                font-size: 14px;
+
             }
 
         }

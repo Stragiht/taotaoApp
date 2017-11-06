@@ -2,7 +2,7 @@
   <div class="change-phone">
     <div class="header">
       <h2>更换验证手机</h2>
-      <router-link to="/my/ComWallet">
+      <router-link to="/my/withdraw">
         <img class="back" src="./../assets/images/icon_fanhui.png" alt="">
       </router-link>
     </div>

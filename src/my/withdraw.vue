@@ -57,9 +57,11 @@
                  </div>
              </div>
              <div class="bank-list">
-                 <div class="bank-item">
-                     <span>更换手机号</span>
-                 </div>
+                 <router-link to="/my/changePhone">
+                     <div class="bank-item">
+                         <span>更换手机号</span>
+                     </div>
+                 </router-link>
              </div>
          </popup>
      </div>

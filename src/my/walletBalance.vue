@@ -2,7 +2,9 @@
  <div class="wallet-balance">
      <div class="header">
          <h2>企业钱包</h2>
-         <img class="back" src="./../assets/images/icon_fanhui.png" alt="">
+         <router-link to="/my/ComWallet">
+             <img class="back" src="./../assets/images/icon_fanhui.png" alt="">
+         </router-link>
      </div>
      <div class="content">
          <img src="./../assets/images/qianbao.png" alt="">
@@ -10,10 +12,15 @@
      <p class="title">钱包余额</p>
      <p class="money">￥124113134.32</p>
      <div style="text-align: center">
-         <button class="recharge">充值</button>
+         <router-link to="/my/recharge">
+             <button class="recharge">充值</button>
+         </router-link>
      </div>
      <div style="text-align: center">
-         <button class="withdrawal">提现</button>
+         <router-link to="/my/withdraw">
+             <button class="withdrawal">提现</button>
+         </router-link>
+
      </div>
 
  </div>

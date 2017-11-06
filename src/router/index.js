@@ -72,63 +72,9 @@ const Setting = (resolve) => {
     resolve(module)
   })
 }
-// 登录
-const Login = (resolve) => {
-  import('@/system/login').then((module) => {
-    resolve(module)
-  })
-}
-// 忘记密码
-const ForgetPsw = (resolve) => {
-  import('@/system/forgetPsw').then((module) => {
-    resolve(module)
-  })
-}
-// 修改密码
-const ChangePsw = (resolve) => {
-  import('@/system/changePsw').then((module) => {
-    resolve(module)
-  })
-}
-// 重置密码
-const ResetPsw = (resolve) => {
-  import('@/system/resetPsw').then((module) => {
-    resolve(module)
-  })
-}
-// 安全中心
-const SafeCenter = (resolve) => {
-  import('@/system/safeCenter').then((module) => {
-    resolve(module)
-  })
-}
-// 修改手机号
-const CheckId = (resolve) => {
-  import('@/system/checkId').then((module) => {
-    resolve(module)
-  })
-}
-// 设置新手机号
-const SetNewPhone = (resolve) => {
-  import('@/system/setNewPhone').then((module) => {
-    resolve(module)
-  })
-}
-// 退出
-const LoginOut = (resolve) => {
-  import('@/system/loginOut').then((module) => {
-    resolve(module)
-  })
-}
-// 意见反馈
-const Suggestion = (resolve) => {
-  import('@/system/suggestion').then((module) => {
-    resolve(module)
-  })
-}
-// 消息中心
-const MessageList = (resolve) => {
-  import('@/message/messageList').then((module) => {
+// 充值
+const Recharge = (resolve) => {
+  import('@/my/recharge').then((module) => {
     resolve(module)
   })
 }
@@ -198,54 +144,9 @@ export default new Router({
           name: '设置'
         },
         {
-          path: '/system/login',
-          component: Login,
-          name: '登录'
-        },
-        {
-          path: '/system/forgetPsw',
-          component: ForgetPsw,
-          name: '忘记密码'
-        },
-        {
-          path: '/system/changePsw',
-          component: ChangePsw,
-          name: '修改密码'
-        },
-        {
-          path: '/system/safeCenter',
-          component: SafeCenter,
-          name: '安全中心'
-        },
-        {
-          path: '/system/resetPsw',
-          component: ResetPsw,
-          name: '重置密码'
-        },
-        {
-          path: '/system/checkId',
-          component: CheckId,
-          name: '验证身份'
-        },
-        {
-          path: '/system/setNewPhone',
-          component: SetNewPhone,
-          name: '设置新手机'
-        },
-        {
-          path: '/system/loginOut',
-          component: LoginOut,
-          name: '退出账号'
-        },
-        {
-          path: '/system/suggestion',
-          component: Suggestion,
-          name: '意见反馈'
-        },
-        {
-          path: '/message/messageList',
-          component: MessageList,
-          name: '消息中心'
+          path: '/my/recharge',
+          component: Recharge,
+          name: '充值'
         }
       ]
     }
