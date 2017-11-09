@@ -1,7 +1,9 @@
 <template>
     <div class="pay-ammount-cont">
         <header class="pay-ammount-head">
-            <span class="pay-ammount-return"></span>
+            <router-link to="/my/walletBalance">
+                <span class="pay-ammount-return"></span>
+            </router-link>
             充值
         </header>
         <div class="set-ammount-area">
@@ -13,6 +15,7 @@
         </div>
         <p class="pay_tips">充值手续费2元/笔，从充值金额中内扣</p>
         <button class="pay-ammount-btn" @click="next()">充值</button>
+
     </div>
 </template>
 <script>
@@ -27,8 +30,7 @@
     },
     methods: {
       next () {
-        this.popupVisible = true
-        this.$toaster('1werwerwrwer1', 2000)
+        this.$toaster('1werwerwrwer1')
       }
     }
   }

@@ -1,7 +1,9 @@
 <template>
 	<div  class="pay-ammount-cont">
 		<header class="pay-ammount-head">
-			<span class="pay-ammount-return"></span>
+			<router-link to="/my/ComWallet">
+				<span class="pay-ammount-return"></span>
+			</router-link>
 			设置金额
 		</header>
 		<div class="set-ammount-area">
@@ -33,7 +35,7 @@
     methods: {
       next () {
         this.popupVisible = true
-        this.$toaster('1werwerwrwer1', 2000)
+        this.$toaster('测试', 2000)
       }
     }
   }

@@ -1,8 +1,11 @@
 
-import { MessageBox } from 'mint-ui';
+// import { MessageBox } from 'mint-ui';
 import Http from './http.class.js';
 import Config from './config.js';
-import Route from '@/route/config.js';
+import Toaster from './../assets/js/toaster'
+
+
+// import Route from '@/route/config.js';
 
 import NativeAPIInterfaceClass from './NativeAPI.Interface.Class.js';
 
@@ -43,14 +46,11 @@ export default class Login {
 	
 	//去登录
 	static goLogin(){
+		// 单页面登录会有问题
 		return Http.Fn._uri(Route.pathp + Route.login.login)
 	}
 	//检测登录信息是否有效 ===== 拦截器
 	static checkLogin (success,error = null){ 
-
-
-
-		
 		NativeAPIInterface.getLoginInfo((ren)=> {
 			//保存信息
 			// Http.Fn._storage('accessToken',ren.accessToken );//保存accessToken
@@ -60,10 +60,7 @@ export default class Login {
 
 //			alert(ren)
 //			
-			
-			
-			
-		},function (){
+				},function (){
 			
 			NativeAPIInterface.replaceLogin();
 		})
@@ -180,6 +177,7 @@ export default class Login {
 		  			password : this.getEncrypt(password,this.appKey),// 加密密码  
 				},
 				success :  (reg) => {
+				  console.log(reg)
 					let data = reg.data;
 					if(data.successful && !Http.Fn.isempty(data.result)){
 						//获取token
@@ -225,11 +223,11 @@ export default class Login {
 	  	return encrypt.encrypt(str);
 	}
 	//提示
-	static msg (text){
-		MessageBox({
-			title: '温馨提示',
-			message: text,
-		});
+	static msg (text,callback){
+	  console.log(text)
+    Toaster.Alert({
+      message:text
+    },callback);
 		
 	}
 }

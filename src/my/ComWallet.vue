@@ -12,9 +12,9 @@
                 <div class="wallet" v-if="toggleFlag">
                     <span class="wallet-toggle"></span>
                     <div class="wallet-item">
-                      <router-link to="/my/walletBalance">
+
                           <h3>企业钱包</h3>
-                      </router-link>
+
                     </div>
                     <div class="wallet-item">
                         <h3>张小兵钱包</h3>
@@ -24,19 +24,23 @@
         </div>
         <div class="content  mb20">
             <div class="wallet-money">
-               <p>34234232.34元</p>
-                <span></span>
+                <router-link to="/my/walletBalance">
+                      <p>34234232.34元</p>
+                </router-link>
+              <!--  <span></span>-->
             </div>
             <div class="surplus-money">
                 账号余额
             </div>
         </div>
         <div class="content-item">
+            <router-link to="/my/setAmmount">
             <div class="title mb20">
                 <i class="icon  bgColor iconfont icon-qianbao-shoukuangma" style=" color:#23D2AB"></i>
                 <h3>收款码</h3>
                 <i class="icon jump iconfont icon-tiaozhuan"></i>
             </div>
+            </router-link>
             <router-link to="/my/incomeExpenditure">
                 <div class="title border mb20">
                     <i class="icon  bgColor iconfont icon-qianbao-shouzhimingx" style="color:  #23D2AB;"></i>

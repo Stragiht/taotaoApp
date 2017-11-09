@@ -15,7 +15,7 @@
         <div class="bank-infor">
            <div class="infor-item">
              <p>转账银行卡</p>
-             <p>企业建设银行(3231)</p>
+             <p @click="changeBnak">企业建设银行(3231)</p>
            </div>
           <div class="infor-item">
             <p>提现金额</p>
@@ -65,6 +65,21 @@
              </div>
          </popup>
      </div>
+      <div v-transfer-dom>
+          <popup v-model="showBank" position="bottom">
+              <div class="bank-list">
+                  <div class="bank-item">
+                      <span >15197294075</span>
+                      <span class="icon-yixuan icon iconfont select-icon"></span>
+                  </div>
+              </div>
+              <div class="bank-list">
+                  <div class="bank-item">
+                      <span>更换手机号</span>
+                  </div>
+              </div>
+          </popup>
+      </div>
 
     <div class="withdraw-content" v-if="showBankInfor">
         <div class="result">
@@ -101,7 +116,8 @@
     data () {
       return {
         showBankInfor: false,
-        showPhone: false
+        showPhone: false,
+        showBank:false
       }
     },
     methods: {
@@ -113,6 +129,9 @@
       },
       changePhone () {
         this.showPhone = true
+      },
+      changeBnak () {
+        this.showBank = true
       }
     }
   }

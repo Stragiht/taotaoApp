@@ -15,10 +15,10 @@
                 <p>身份证号码 *</p>
                 <input type="text" placeholder="请输入身份证号码">
             </div>
-            <div class="bank-item">
+            <div class="bank-item mb10">
                 <p>银行名称 *</p>
-                <group>
-                    <popup-picker :title="title2" :data="list1" v-model="value2"></popup-picker>
+                <group >
+                    <popup-picker :title="title2" :data="list1" v-model="value2" ></popup-picker>
                 </group>
             </div>
             <div class="bank-item">
@@ -120,6 +120,7 @@
                 .code{
                     width: 360px;
                     margin-right: 30px;
+                    height: 76px;
                 }
                 .getCode{
                     width: 260px;

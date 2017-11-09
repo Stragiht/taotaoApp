@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import Http from './../api/login.class'
+import Fn from './../api/function.class'
 Vue.use(Router)
 
 const Common = (resolve) => {
@@ -78,7 +79,13 @@ const Recharge = (resolve) => {
     resolve(module)
   })
 }
-export default new Router({
+// 充值
+const Login = (resolve) => {
+  import('@/system/login').then((module) => {
+    resolve(module)
+  })
+}
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -147,8 +154,19 @@ export default new Router({
           path: '/my/recharge',
           component: Recharge,
           name: '充值'
+        },
+        {
+          path: '/system/login',
+          component: Login,
+          name: '登录'
         }
       ]
     }
   ]
 })
+//  判断是否需要登录权限 以及是否登录
+router.beforeEach((to, from, next) => {
+
+  next()
+})
+export default router

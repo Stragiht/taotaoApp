@@ -39,7 +39,7 @@
             window.location.href = 'http://183.6.133.107:8050/apps.aptoto.www/views/inquiry/list.html'
             break
           case 'my':
-            this.router.push({path: '/my/myInfor'})
+            this.$router.push({path: '/my/myInfor'})
             break
         }
       }
@@ -59,19 +59,24 @@
         li{
             flex: 1;
             text-align: center;
+            height: 98px;
             .iconfont{
                 display: block;
-                margin: 10px 0;
-                font-size: 30px;
+                margin: 14px 0 6px 0 ;
+                font-size: 40px;
+                color: #929292;
             }
             span{
                 font-size: 22px;
-                color: #56606F;
+                color: #929292;
                 line-height: 22px;
             }
         }
         .isSelect{
-            color: #6299F3;
+            .iconfont{
+                color: #6299F3;
+            }
+
             span{
                 color: #6299F3;
             }

@@ -81,7 +81,7 @@
                     right: 46px;
                     top: 0;
                     color: #9B9B9B;
-                    font-size: 158px;
+                    font-size: 48px;
                     width: 60px;
                     display: inline-block;
                     height: 40px;
