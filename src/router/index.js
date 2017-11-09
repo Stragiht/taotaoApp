@@ -85,6 +85,12 @@ const Login = (resolve) => {
     resolve(module)
   })
 }
+//保证够
+const Agreement = (resolve) => {
+  import('@/order/agreement').then((module) => {
+    resolve(module)
+  })
+}
 const router = new Router({
   routes: [
     {
@@ -158,6 +164,11 @@ const router = new Router({
         {
           path: '/system/login',
           component: Login,
+          name: '登录'
+        },
+        {
+          path: '/order/agreement',
+          component: Agreement,
           name: '登录'
         }
       ]
