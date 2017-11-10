@@ -47,7 +47,8 @@ export default class Login {
 	//去登录
 	static goLogin(){
 		// 单页面登录会有问题
-		return Http.Fn._uri(Route.pathp + Route.login.login)
+		let url = "http://183.6.133.107:8050/apps.aptoto.www/views/index/index.html"
+		return Http.Fn._uri(url)
 	}
 	//检测登录信息是否有效 ===== 拦截器
 	static checkLogin (success,error = null){ 

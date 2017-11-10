@@ -39,6 +39,7 @@
       },
       mounted(){
         this.user.username = Fn._localStorage('remember')
+        console.log(Fn._localStorage('remember'))
         this.user.password = Fn._localStorage('password')
       },
       methods:{

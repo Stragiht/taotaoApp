@@ -6,18 +6,10 @@
             </router-link>
             收支明细
         </header>
-           <!-- <scroll :data="songs" @scroll="scroll"
-                    :listen-scroll="listenScroll" :probe-type="probeType" class="list" ref="list">
-                <div class="song-list-wrapper">
-                    <song-list :songs="songs" :rank="rank" @select="selectItem"></song-list>
-                </div>
-                <div v-show="!songs.length" class="loading-container">
-                    <loading></loading>
-                </div>
-            </scroll>-->
-        <ul class="income-content" >
-            <scroll :data="moneyData" @scroll="scroll"
-                    :listen-scroll="listenScroll" :probe-type="probeType"  >
+
+        <scroll :data="moneyData" @scrollToEnd="scrollToEnd" :pullup="pullup"
+                :listen-scroll="listenScroll" :probe-type="probeType">
+            <ul class="income-content">
                 <li v-for="data in moneyData">
                     <div class="income-recharge-row clearfix">
                         <span class="recharge-l fl">{{data.type}}</span>
@@ -28,105 +20,54 @@
                         <span class="order-r fr">{{data.number}}</span>
                     </div>
                 </li>
-            </scroll>
-
+                <loading v-if="show"></loading>
             </ul>
-     </div>
+        </scroll>
+
+    </div>
 </template>
 
 <script type="text/javascript">
   import Scroll from '@/components/scroll'
+ import Loading from '@/components/loading'
+  import axios from 'axios'
 
   export default {
-    components:{
-      Scroll
+    components: {
+      Scroll,
+      Loading
     },
     data () {
       return {
-        probeType:3,
-        listenScroll:true,
-        moneyData: [{
-          type: '充值',
-          money: 1000,
-          time: 2013 - 10 - 1,
-          number: 'APDD-278887776655555'
-        },
-          {
-            type: '充值',
-            money: 1000,
-            time: 2013 - 10 - 1,
-            number: 'APDD-278887776655555'
-          },
-          {
-            type: '充值',
-            money: 1000,
-            time: 2013 - 10 - 1,
-            number: 'APDD-278887776655555'
-          },
-          {
-            type: '充值',
-            money: 1000,
-            time: 2013 - 10 - 1,
-            number: 'APDD-278887776655555'
-          },
-          {
-            type: '充值',
-            money: 1000,
-            time: 2013 - 10 - 1,
-            number: 'APDD-278887776655555'
-          },
-          {
-            type: '充值',
-            money: 1000,
-            time: 2013 - 10 - 1,
-            number: 'APDD-278887776655555'
-          },
-          {
-            type: '充值',
-            money: 1000,
-            time: 2013 - 10 - 1,
-            number: 'APDD-278887776655555'
-          },
-          {
-            type: '充值',
-            money: 1000,
-            time: 2013 - 10 - 1,
-            number: 'APDD-278887776655555'
-          }, {
-            type: '充值',
-            money: 1000,
-            time: 2013 - 10 - 1,
-            number: 'APDD-278887776655555'
-          },
-          {
-            type: '充值',
-            money: 1000,
-            time: 2013 - 10 - 1,
-            number: 'APDD-278887776655555'
-          },
-          {
-            type: '充值',
-            money: 1000,
-            time: 2013 - 10 - 1,
-            number: 'APDD-278887776655555'
-          }
-          , {
-            type: '充值',
-            money: 1000,
-            time: 2013 - 10 - 1,
-            number: 'APDD-278887776655555'
-          }]
+        probeType: 3,
+        listenScroll: true,
+        pullup: true,
+        show:false,
+        moneyData: []
       }
+    },
+    mounted () {
+      axios.get('../static/jsonData/test.json').then (data => {
+        console.log( typeof data.data)
+        this.moneyData = data.data
+      })
     },
     methods: {
       scroll () {
-        console.log(1)
-        this.moneyData.push({
+        this.moneyData.push ({
           type: '充值',
           money: 1000,
           time: 2013 - 10 - 1,
           number: 'APDD-278887776655555'
         })
+
+        setTimeout(()=>{
+          this.show = false
+        },2000)
+      },
+      scrollToEnd(){
+        this.show = true
+        this.scroll ()
       }
     }
   }
@@ -156,7 +97,8 @@
     .clearfix:after {
         clear: both;
     }
-    .income{
+
+    .income {
         width: 100%;
         height: 100%;
         position: relative;
@@ -187,9 +129,8 @@
         .income-content {
             position: absolute;
             top: 88px;
-            left:0;
+            left: 0;
             width: 100%;
-            overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
             li {
                 background: #FFFFFF;
@@ -230,7 +171,6 @@
             }
         }
     }
-
 
 
 </style>

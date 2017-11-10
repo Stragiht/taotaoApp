@@ -40,6 +40,7 @@ class api_http{
         complete : args.complete,
         beforeSend : args.beforeSend,
         success : (reg) => {
+
           if(args.p)console.log(reg)
           let data = reg.data;
           args.success(reg);
@@ -92,8 +93,8 @@ class api_http{
           if(args.p)console.log(reg)
           let data = reg.data;
           //console.log(data)
-          if(data.bizCode && (data.bizCode.code == 'PP0008' || data.bizCode.code ==  'PP0009')){
-            if(data.bizCode.code ==  'PP0008' ){
+          if(data.bizCode && (data.bizCode.code === 'PP0008' || data.bizCode.code ===  'PP0009')){
+            if(data.bizCode.code ===  'PP0008' ){
               Login.RefreshAccessToken(refreshToken,userId,function (){
                 this.api_http(args);
               },function (err){

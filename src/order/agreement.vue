@@ -59,13 +59,8 @@
             }
         }
         .content{
-            position: absolute;
-            top: 88px;
-            left: 0;
-            height: auto;
-            overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
-            margin-top: 20px;
+            margin-top: 88px;
             width: 100%;
             .shop-thing{
                 height: auto;

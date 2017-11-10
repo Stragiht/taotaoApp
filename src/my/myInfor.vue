@@ -58,10 +58,29 @@
 </template>
 <script>
   import VFooter from '@/components/VFooter'
+  const order_max_size=30;
+  let currentPage=1; //当前页
+  let totalPage=1;
 
   export default {
     components: {
       VFooter
+    },
+    mounted(){
+      this.$api_http({
+        url : '/order/myOrder/list',
+        type:"GET",
+        data: {
+          pageNO: currentPage,
+          status: 0,
+          pageSize: order_max_size,
+        },
+        success: (ren) => {
+          let data = ren.data;
+          console.log(ren)
+        },
+        error: ()=> {}
+      });
     }
   }
 </script>

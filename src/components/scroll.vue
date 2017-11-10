@@ -1,5 +1,5 @@
 <template>
-    <div ref="wrapper">
+    <div ref="wrapper" class="wrapper">
         <slot></slot>
     </div>
 </template>
@@ -22,7 +22,7 @@
        */
       click: {
         type: Boolean,
-        default: true
+        default: false
       },
       /**
        * 是否开启横向滚动
@@ -36,7 +36,7 @@
        */
       listenScroll: {
         type: Boolean,
-        default: true
+        default: false
       },
       /**
        * 列表的数据
@@ -85,8 +85,8 @@
         if (!this.$refs.wrapper) {
           return
         }
-        console.log(this.click)
         // better-scroll的初始化
+        console.log('初始化')
         this.scroll = new BScroll(this.$refs.wrapper, {
           probeType: this.probeType,
           click: this.click,
@@ -97,18 +97,18 @@
         if (this.listenScroll) {
           let me = this
           this.scroll.on('scroll', (pos) => {
-           alert(1)
             me.$emit('scroll', pos)
           })
         }
-
+        let _this=this
         // 是否派发滚动到底部事件，用于上拉加载
         if (this.pullup) {
-          this.scroll.on('scrollEnd', () => {
-            // 滚动到底部
-            console.log(1)
-            if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
-              this.$emit('scrollToEnd')
+          this.scroll.on('scrollEnd', (pos) => {
+            // 滚动到底部、
+            console.log(this.maxScrollY)
+            if (pos.y <= (_this.scroll.maxScrollY + 50)) {
+
+              _this.$emit('scrollToEnd')
             }
           })
         }
@@ -156,8 +156,15 @@
       data() {
         setTimeout(() => {
           this.refresh()
+          console.log(1)
         }, this.refreshDelay)
       }
     }
   }
 </script>
+<style type="text/less" lang="less" scoped>
+    .wrapper{
+        height: 100%;
+        width: 100%;
+    }
+</style>

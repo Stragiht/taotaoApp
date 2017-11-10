@@ -7,7 +7,7 @@ import './assets/css/reset.css'
 import './assets/css/public.css'
 import './assets/font/iconfont.css'
 import utils from './utils/util'
-import api_http from './api/api_http.class'
+import Htttp from './api/api_http.class'
 import 'lib-flexible'
 import Direcitve from './directive/directive'
 import toaster from './assets/js/toaster'
@@ -16,7 +16,7 @@ import toaster from './assets/js/toaster'
 // 将工具方法绑定到全局
 Vue.prototype.$utils = utils
 Vue.prototype.$toaster = toaster.Toaster
-Vue.prototype.$api_http = api_http
+Vue.prototype.$api_http = Htttp.api_http
 Vue.config.productionTip = false
 
 // 自定义指令 全局使用

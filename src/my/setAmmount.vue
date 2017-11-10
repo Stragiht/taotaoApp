@@ -10,7 +10,7 @@
 			<p class="set-top">付款金额</p>
 			<div class="set-ammount">
 				<span></span>
-				<input type="text" class="" />
+				<input type="number"  v-setmoney/>
 			</div>
 		</div>
 		<p class="pay_tips">充值手续费2元/笔，从充值金额中内扣</p>
@@ -51,21 +51,90 @@
 	height: 100%;
 }
 
-.pay-ammount-head{height:68px;padding: 10px 0;font-size: 32px;color: #232326;line-height: 68px;text-align: center;position: relative;
-background: #FAFAFA;box-shadow: 0 1px 0 0 #E1E1E1;font-weight: bold;background: #FAFAFA;font-family: PingFangSC-Regular;}
-.pay-ammount-return{display: inline-block;position: absolute;top: 26px;left: 32px;background: url(./../assets/images/icon_fanhui.png) no-repeat;
-background-size: 100% 100%;width: 38px;height: 36px;}
-.set-ammount-area{background: #FFFFFF;-webkit-border-radius: 4px;border-radius: 4px;margin: 48px 40px 5px;padding: 36px 44px;}
-.pay_tips{font-size: 26px;padding: 20px 40px;color: #9B9B9B;}
-.set-top{font-family: PingFangSC-Regular;font-size: 28px;color: #000000;font-weight: bold;}
-.set-ammount{margin: 26px 0px 0;}
-.set-ammount span{display: inline-block;width: 58px;height: 58px;margin: 0 22px 0 0;background: url(./../assets/images/icon_renmingbi.png) no-repeat;
-background-size: 100% 100%;}
-.set-ammount input{display: inline-block;width: 80%;height: 106px;border: 0;}
-.pay-ammount-btn{display: block;width: 90%;background: #6299F3;border-radius: 4px;color: #FFFFFF;margin:90px 40px 0;font-size: 34px;
-text-align: center;height: 90px;line-height: 90px;border: 0;}
-.mint-actionsheet-listitem{
-    height: 100px;
+.pay-ammount-head {
+	height: 68px;
+	padding: 10px 0;
+	font-size: 32px;
+	color: #232326;
+	line-height: 68px;
+	text-align: center;
+	position: relative;
+	background: #FAFAFA;
+	box-shadow: 0 1px 0 0 #E1E1E1;
+	font-weight: bold;
+	background: #FAFAFA;
+	font-family: PingFangSC-Regular;
+}
+
+.pay-ammount-return {
+	display: inline-block;
+	position: absolute;
+	top: 26px;
+	left: 32px;
+	background: url(./../assets/images/icon_fanhui.png) no-repeat;
+	background-size: 100% 100%;
+	width: 38px;
+	height: 36px;
+}
+
+.set-ammount-area {
+	background: #FFFFFF;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	margin: 48px 40px 5px;
+	padding: 36px 44px;
+}
+
+.pay_tips {
+	font-size: 26px;
+	padding: 20px 40px;
+	color: #9B9B9B;
+}
+
+.set-top {
+	font-family: PingFangSC-Regular;
+	font-size: 28px;
+	color: #000000;
+	font-weight: bold;
+}
+
+.set-ammount {
+	margin: 26px 0px 0;
+}
+
+.set-ammount span {
+	display: inline-block;
+	width: 58px;
+	height: 58px;
+	margin: 0 22px 0 0;
+	background: url(./../assets/images/icon_renmingbi.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.set-ammount input {
+	display: inline-block;
+	width: 80%;
+	height: 106px;
+	border: 0;
+	font-size: 32px;
+}
+
+.pay-ammount-btn {
+	display: block;
+	width: 90%;
+	background: #6299F3;
+	border-radius: 4px;
+	color: #FFFFFF;
+	margin: 90px 40px 0;
+	font-size: 34px;
+	text-align: center;
+	height: 90px;
+	line-height: 90px;
+	border: 0;
+}
+
+.mint-actionsheet-listitem {
+	height: 100px;
 }
 </style>
 

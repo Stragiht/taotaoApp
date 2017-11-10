@@ -169,7 +169,7 @@ const router = new Router({
         {
           path: '/order/agreement',
           component: Agreement,
-          name: '登录'
+          name: '保证够'
         }
       ]
     }
@@ -177,7 +177,16 @@ const router = new Router({
 })
 //  判断是否需要登录权限 以及是否登录
 router.beforeEach((to, from, next) => {
-
+ /* if (to.path !== '/system/login') {
+    Http.checkLogin(() => {
+      console.log(1)
+      next()
+    }, () => {
+      this.$router.push({
+        path: '/system/login'
+      })
+    })
+  }*/
   next()
 })
 export default router
