@@ -9,6 +9,11 @@ const Common = (resolve) => {
     resolve(module)
   })
 }
+const Lost = (resolve) => {
+  import('@/404/404').then((module) => {
+    resolve(module)
+  })
+}
 const MyInfor = (resolve) => {
   import('@/my/myInfor').then((module) => {
     resolve(module)
@@ -96,6 +101,10 @@ const router = new Router({
     {
       path: '/',
       redirect: '/my/myInfor'
+    },
+    {
+      path: '/lost',
+      component: Lost,
     },
     {
       path: '/common',

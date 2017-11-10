@@ -10,7 +10,7 @@
 			<p class="set-top">付款金额</p>
 			<div class="set-ammount">
 				<span></span>
-				<input type="number"  v-setmoney/>
+				<input type="number"  v-setmoney v-model="money"/>
 			</div>
 		</div>
 		<p class="pay_tips">充值手续费2元/笔，从充值金额中内扣</p>
@@ -22,6 +22,7 @@
     data () {
       return {
         value: false,
+        money:"",
         actions: [{'name': 'paizhao', method: this.callback}],
         slots: [{
           values: ['2015-01', '2015-02', '2015-03', '2015-04', '2015-05', '2015-06', '2015-07', '2015-08', '2015-9', '2015-10', '2015-11', '2015-12'],
@@ -35,7 +36,12 @@
     methods: {
       next () {
         this.popupVisible = true
-        this.$toaster('测试', 2000)
+        console.log(this.$NativeAPIInterface)
+        this.$NativeAPIInterface.replaceRec(this.money);
+
+
+
+       // this.$toaster('测试', 2000)
       }
     }
   }

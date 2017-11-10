@@ -12,17 +12,23 @@ import 'lib-flexible'
 import Direcitve from './directive/directive'
 import toaster from './assets/js/toaster'
 
+import {NativeAPIInterface} from './api/login.class';
+
 
 // 将工具方法绑定到全局
 Vue.prototype.$utils = utils
 Vue.prototype.$toaster = toaster.Toaster
 Vue.prototype.$api_http = Htttp.api_http
 Vue.config.productionTip = false
-
+Vue.prototype.$NativeAPIInterface = NativeAPIInterface;
 // 自定义指令 全局使用
 Object.keys(Direcitve).forEach(key => {
   Vue.directive(key, Direcitve[key])
 })
+
+
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

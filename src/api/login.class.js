@@ -9,9 +9,9 @@ import Toaster from './../assets/js/toaster'
 
 import NativeAPIInterfaceClass from './NativeAPI.Interface.Class.js';
 
-const NativeAPIInterface = new NativeAPIInterfaceClass(); // app jsapi接口
+export  const NativeAPIInterface = new NativeAPIInterfaceClass(); // app jsapi接口
 
-export default class Login {
+export  class Login {
 	
 	static http = Http;
 	static config = Config;
@@ -22,9 +22,7 @@ export default class Login {
 	static EuByeUri = Config.REQUEST_URI +'/passport/authen/eu-bye';  //注销登录状态 
 	static appId = Config.APP_ID;
 	static appKey = Config.APP_KEY;
-	
-	
-	//退出登录
+		//退出登录
 	static quit(callback){ 
 		let userId  = Http.Fn._storage('userId');
 		Http._http({
@@ -48,7 +46,7 @@ export default class Login {
 	static goLogin(){
 		// 单页面登录会有问题
 		let url = "http://183.6.133.107:8050/apps.aptoto.www/views/index/index.html"
-		return Http.Fn._uri(url)
+		return Http.Fn._uri(Route.pathp + Route.login.login)
 	}
 	//检测登录信息是否有效 ===== 拦截器
 	static checkLogin (success,error = null){ 
@@ -107,11 +105,7 @@ export default class Login {
 		//获取授权码
 		this.getPuCode(username,password,success,error);
 	}
-	
-	
-	
-	
-	/**
+		/**
 	 * 获取Token等信息
 	 * 
 	 */
@@ -132,8 +126,6 @@ export default class Login {
 		
 		
 	}
-	
-	
 	//置换新令牌
 	static RefreshAccessToken (refreshToken , userId , success , error){
 		Http._http({
@@ -166,8 +158,6 @@ export default class Login {
 			
 		});
 	}
-
-	
 	//获取授权码grantCode
 	static getPuCode (username,password,success,error){
 			Http._http({
@@ -229,7 +219,5 @@ export default class Login {
     Toaster.Alert({
       message:text
     },callback);
-		
-	}
+		}
 }
-

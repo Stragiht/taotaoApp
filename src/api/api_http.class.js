@@ -1,8 +1,8 @@
-import Login from './login.class.js';
+import {Login} from './login.class.js';
 const Http = Login.http;
 const Config = Login.config;
 const Fn = Http.Fn;
-console.log(Config)
+
 class api_http{
   constructor (){
 

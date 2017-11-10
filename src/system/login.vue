@@ -25,7 +25,7 @@
     </div>
 </template>
 <script>
-    import Login from './../api/login.class'
+    import {Login} from './../api/login.class'
     import Fn from './../api/function.class'
     export default {
       data(){
