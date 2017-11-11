@@ -12,9 +12,7 @@
      <p class="title">钱包余额</p>
      <p class="money">￥124113134.32</p>
      <div style="text-align: center">
-         <router-link to="/my/recharge">
-             <button class="recharge">充值</button>
-         </router-link>
+         <button class="recharge" @click="recharge">充值</button>
      </div>
      <div style="text-align: center">
          <router-link to="/my/withdraw">
@@ -26,7 +24,13 @@
  </div>
 </template>
 <script>
-
+  export default {
+    methods: {
+      recharge () {
+        this.$NativeAPIInterface.replaceRec();
+      }
+    }
+  }
 </script>
 <style type="text/less" lang="less" scoped>
     .wallet-balance{

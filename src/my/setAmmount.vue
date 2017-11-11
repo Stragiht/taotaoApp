@@ -10,7 +10,7 @@
 			<p class="set-top">付款金额</p>
 			<div class="set-ammount">
 				<span></span>
-				<input type="number"  v-setmoney v-model="money"/>
+				<input type="number"  v-setmoney  v-model="money"/>
 			</div>
 		</div>
 		<p class="pay_tips">充值手续费2元/笔，从充值金额中内扣</p>
@@ -35,10 +35,8 @@
     },
     methods: {
       next () {
-        this.popupVisible = true
         console.log(this.$NativeAPIInterface)
-        this.$NativeAPIInterface.replaceRec(this.money);
-
+        this.$NativeAPIInterface.replaceSc(this.money);
 
 
        // this.$toaster('测试', 2000)

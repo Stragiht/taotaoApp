@@ -7,10 +7,11 @@
             收支明细
         </header>
 
-        <scroll :data="moneyData" @scrollToEnd="scrollToEnd" :pullup="pullup"
-                :listen-scroll="listenScroll" :probe-type="probeType">
+        <scroll :data="moneyData" @scrollToEnd="scrollToEnd" :pullup="pullup" :pulldown = "pulldown" @pulldown ="pulldownRefresh"
+                :listen-scroll="listenScroll" :probe-type="probeType"  v-if="hasData">
             <ul class="income-content">
-                <li v-for="data in moneyData">
+
+                <li v-for="data in moneyData" >
                     <div class="income-recharge-row clearfix">
                         <span class="recharge-l fl">{{data.type}}</span>
                         <span class="recharge-r fr">{{data.money}}</span>
@@ -21,8 +22,10 @@
                     </div>
                 </li>
                 <loading v-if="show"></loading>
+
             </ul>
         </scroll>
+        <no-result v-if="!hasData"></no-result>
 
     </div>
 </template>
@@ -30,19 +33,23 @@
 <script type="text/javascript">
   import Scroll from '@/components/scroll'
  import Loading from '@/components/loading'
+  import NoResult from '@/components/no-result'
   import axios from 'axios'
 
   export default {
     components: {
       Scroll,
-      Loading
+      Loading,
+      NoResult
     },
     data () {
       return {
         probeType: 3,
         listenScroll: true,
         pullup: true,
+        pulldown:true,
         show:false,
+        hasData:true,
         moneyData: []
       }
     },
@@ -63,11 +70,14 @@
 
         setTimeout(()=>{
           this.show = false
-        },2000)
+        },5000)
       },
       scrollToEnd(){
         this.show = true
         this.scroll ()
+      },
+      pulldownRefresh(){
+        console.log(11)
       }
     }
   }
@@ -131,6 +141,7 @@
             top: 88px;
             left: 0;
             width: 100%;
+            height: auto;
             -webkit-overflow-scrolling: touch;
             li {
                 background: #FFFFFF;

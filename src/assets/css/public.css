@@ -4,6 +4,7 @@ html,body{
     width:100%;
     height: 100%;
 }
+
 /*去掉滚动条样式*/
 ::-webkit-scrollbar {
     width: 0;
@@ -30,7 +31,7 @@ button{
     outline:none;
     box-shadow: none;
 }
-input {outline:none;}
+input {outline:none;-webkit-appearance:none;}
 .cnter{
     display: flex;
     align-items: center;
@@ -47,7 +48,7 @@ input {outline:none;}
     line-height: 98px;
     background: #FFFFFF;
     box-sizing: border-box;
-    border-bottom: 1px solid #DFDFDF;
+
 }
 .vux-flexbox .ux-popup-picker-cancel{
     font-size: 32px;
@@ -63,7 +64,7 @@ input {outline:none;}
 .vux-cell-box .weui-cell{
     border: 2px solid #D8D8D8;
     box-sizing: border-box;
-    padding: 0 0 0 0;
+    padding: 0;
     color: #9B9B9B;
     letter-spacing: 2px;
     padding-left: 13px;

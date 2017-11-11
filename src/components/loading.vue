@@ -5,6 +5,7 @@
   </div>
 </template>
 <script >
+
   export default {
     props: {
       title: {
@@ -19,9 +20,10 @@
   .loading{
     width: 100%;
     text-align: center;
+    height: 220px;
     .desc{
-      line-height: 34px;
-      height: 34px;
+      line-height: 60px;
+      height: 60px;
       width: 100%;
       font-size: 24px;
       color: #333333;

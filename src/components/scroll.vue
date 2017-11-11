@@ -6,6 +6,7 @@
 
 <script >
   import BScroll from 'better-scroll'
+
   export default {
     props: {
       /**
@@ -105,17 +106,16 @@
         if (this.pullup) {
           this.scroll.on('scrollEnd', (pos) => {
             // 滚动到底部、
-            console.log(this.maxScrollY)
             if (pos.y <= (_this.scroll.maxScrollY + 50)) {
-
-              _this.$emit('scrollToEnd')
+              this.$emit('scrollToEnd')
             }
           })
         }
 
         // 是否派发顶部下拉事件，用于下拉刷新
         if (this.pulldown) {
-          this.scroll.on('touchend', (pos) => {
+          this.scroll.on('pullingDown', (pos) => {
+            alert(1)
             // 下拉动作
             if (pos.y > 50) {
               this.$emit('pulldown')
@@ -166,5 +166,6 @@
     .wrapper{
         height: 100%;
         width: 100%;
+        position: relative;
     }
 </style>

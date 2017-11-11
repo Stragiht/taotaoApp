@@ -11,7 +11,7 @@ import Htttp from './api/api_http.class'
 import 'lib-flexible'
 import Direcitve from './directive/directive'
 import toaster from './assets/js/toaster'
-
+import keyboard from './assets/js/keyboard'
 import {NativeAPIInterface} from './api/login.class';
 
 
