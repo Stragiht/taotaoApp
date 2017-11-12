@@ -75,24 +75,34 @@
         default: 20
       }
     },
-    mounted() {
+    mounted () {
       // 保证在DOM渲染完毕后初始化better-scroll
       setTimeout(() => {
+        this._initParms()
         this._initScroll()
       }, 20)
     },
     methods: {
-      _initScroll() {
+      _initParms () {
+        this.options = {
+          click: true,
+          probeType: 3, // 滑动过程中派发scroll事件
+          pullDownRefresh: {
+            threshold: 50, // 当下拉到超过顶部 50px 时，触发 pullingDown 事件
+            stop: 40 // 刷新数据的过程中，回弹停留在距离顶部还有 20px 的位置
+          },
+          pullUpLoad: {
+            threshold: -40// 在上拉到超过底部 20px 时，触发 pullingUp 事件
+          },
+          scrollbar: false
+        }
+      },
+      _initScroll () {
         if (!this.$refs.wrapper) {
           return
         }
         // better-scroll的初始化
-        console.log('初始化')
-        this.scroll = new BScroll(this.$refs.wrapper, {
-          probeType: this.probeType,
-          click: this.click,
-          scrollX: this.scrollX
-        })
+        this.scroll = new BScroll(this.$refs.wrapper, this.options)
         console.log(this.scroll)
         // 是否派发滚动事件
         if (this.listenScroll) {
@@ -101,12 +111,11 @@
             me.$emit('scroll', pos)
           })
         }
-        let _this=this
         // 是否派发滚动到底部事件，用于上拉加载
         if (this.pullup) {
           this.scroll.on('scrollEnd', (pos) => {
             // 滚动到底部、
-            if (pos.y <= (_this.scroll.maxScrollY + 50)) {
+            if (pos.y <= (this.scroll.maxScrollY + 50)) {
               this.$emit('scrollToEnd')
             }
           })
@@ -114,12 +123,8 @@
 
         // 是否派发顶部下拉事件，用于下拉刷新
         if (this.pulldown) {
-          this.scroll.on('pullingDown', (pos) => {
-            alert(1)
-            // 下拉动作
-            if (pos.y > 50) {
-              this.$emit('pulldown')
-            }
+          this.scroll.on('pullingDown', () => {
+            this.$emit('pulldown', [this._pullDownFinish])
           })
         }
 
@@ -130,33 +135,35 @@
           })
         }
       },
-      disable() {
+      _pullDownFinish () {
+        this.scroll.finishPullDown()
+      },
+      disable () {
         // 代理better-scroll的disable方法
         this.scroll && this.scroll.disable()
       },
-      enable() {
+      enable () {
         // 代理better-scroll的enable方法
         this.scroll && this.scroll.enable()
       },
-      refresh() {
+      refresh () {
         // 代理better-scroll的refresh方法
         this.scroll && this.scroll.refresh()
       },
-      scrollTo() {
+      scrollTo () {
         // 代理better-scroll的scrollTo方法
         this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
       },
-      scrollToElement() {
+      scrollToElement () {
         // 代理better-scroll的scrollToElement方法
         this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
       }
     },
     watch: {
       // 监听数据的变化，延时refreshDelay时间后调用refresh方法重新计算，保证滚动效果正常
-      data() {
+      data () {
         setTimeout(() => {
           this.refresh()
-          console.log(1)
         }, this.refreshDelay)
       }
     }

@@ -6,25 +6,24 @@
             </router-link>
             收支明细
         </header>
-
-        <scroll :data="moneyData" @scrollToEnd="scrollToEnd" :pullup="pullup" :pulldown = "pulldown" @pulldown ="pulldownRefresh"
-                :listen-scroll="listenScroll" :probe-type="probeType"  v-if="hasData">
+          <scroll ref="scroll" :data="moneyData" @scrollToEnd="scrollToEnd" :pullup="pullup" :pulldown = "pulldown" @pulldown ="pulldownRefresh"
+                  :listen-scroll="listenScroll" :probe-type="probeType"  v-if="hasData">
             <ul class="income-content">
-
-                <li v-for="data in moneyData" >
-                    <div class="income-recharge-row clearfix">
-                        <span class="recharge-l fl">{{data.type}}</span>
-                        <span class="recharge-r fr">{{data.money}}</span>
-                    </div>
-                    <div class="income-recharge-row clearfix">
-                        <span class="order-l fl">{{data.time}}</span>
-                        <span class="order-r fr">{{data.number}}</span>
-                    </div>
-                </li>
-                <loading v-if="show"></loading>
+              <li v-for="data in moneyData" >
+                <div class="income-recharge-row clearfix">
+                  <span class="recharge-l fl">{{data.type}}</span>
+                  <span class="recharge-r fr">{{data.money}}</span>
+                </div>
+                <div class="income-recharge-row clearfix">
+                  <span class="order-l fl">{{data.time}}</span>
+                  <span class="order-r fr">{{data.number}}</span>
+                </div>
+              </li>
+              <loading ></loading>
+              <pulling-word  :loading="pullLoading"></pulling-word>
 
             </ul>
-        </scroll>
+          </scroll>
         <no-result v-if="!hasData"></no-result>
 
     </div>
@@ -32,30 +31,33 @@
 
 <script type="text/javascript">
   import Scroll from '@/components/scroll'
- import Loading from '@/components/loading'
+  import Loading from '@/components/loading'
   import NoResult from '@/components/no-result'
+  import PullingWord from '@/components/pulling-word'
   import axios from 'axios'
 
   export default {
     components: {
       Scroll,
       Loading,
-      NoResult
+      NoResult,
+      PullingWord
     },
     data () {
       return {
         probeType: 3,
         listenScroll: true,
         pullup: true,
-        pulldown:true,
-        show:false,
-        hasData:true,
-        moneyData: []
+        pulldown: true,
+        show: false,
+        hasData: true,
+        moneyData: [],
+        pullLoading: false
       }
     },
     mounted () {
       axios.get('../static/jsonData/test.json').then (data => {
-        console.log( typeof data.data)
+        console.log(typeof data.data)
         this.moneyData = data.data
       })
     },
@@ -68,16 +70,25 @@
           number: 'APDD-278887776655555'
         })
 
-        setTimeout(()=>{
+        setTimeout (() => {
+          alert(1)
           this.show = false
-        },5000)
+        }, 5000)
       },
-      scrollToEnd(){
+      scrollToEnd () {
+        if(this.show){
+           return
+        }
         this.show = true
-        this.scroll ()
+        this.scroll()
       },
-      pulldownRefresh(){
-        console.log(11)
+      pulldownRefresh (value) {
+        console.log(value)
+        this.pullLoading = true
+        setTimeout(() => {
+          value[0]()
+          console.log(this.$refs.scroll)
+        }, 2000)
       }
     }
   }
@@ -107,11 +118,11 @@
     .clearfix:after {
         clear: both;
     }
-
     .income {
         width: 100%;
         height: 100%;
         position: relative;
+      background: #ffffff;
         .income-head {
             width: 100%;
             height: 88px;
@@ -137,50 +148,52 @@
             }
         }
         .income-content {
-            position: absolute;
-            top: 88px;
-            left: 0;
-            width: 100%;
-            height: auto;
-            -webkit-overflow-scrolling: touch;
-            li {
-                background: #FFFFFF;
-                border-bottom: 1px solid #F5F5F5;
-                padding: 25px 30px;
-                .income-recharge-row {
-                    width: 100%;
-                }
-                .recharge-l {
-                    font-family: PingFangSC-Medium;
-                    font-size: 34px;
-                    color: #4A4A4A;
-                    display: inline-block;
-                    width: 50%;
-                    font-weight: bold;
-                }
-                .recharge-r {
-                    font-family: PingFangSC-Medium;
-                    font-size: 30px;
-                    color: #000000;
-                    line-height: 30px;
-                    display: inline-block;
-                    width: 50%;
-                    font-weight: bold;
-                    text-align: right;
-                }
-                .order-l, .order-r {
-                    font-family: PingFangSC-Regular;
-                    font-size: 24px;
-                    color: #6D6D6D;
-                    display: inline-block;
-                    width: 50%;
-                    padding: 5px 0;
-                }
-                .order-r {
-                    text-align: right;
-                }
+          position: absolute;
+          top: 88px;
+          left: 0;
+          width: 100%;
+          height: auto;
+          -webkit-overflow-scrolling: touch;
+          li {
+            background: #FFFFFF;
+            border-bottom: 1px solid #F5F5F5;
+            padding: 25px 30px;
+            .income-recharge-row {
+              width: 100%;
             }
+            .recharge-l {
+              font-family: PingFangSC-Medium;
+              font-size: 34px;
+              color: #4A4A4A;
+              display: inline-block;
+              width: 50%;
+              font-weight: bold;
+            }
+            .recharge-r {
+              font-family: PingFangSC-Medium;
+              font-size: 30px;
+              color: #000000;
+              line-height: 30px;
+              display: inline-block;
+              width: 50%;
+              font-weight: bold;
+              text-align: right;
+            }
+            .order-l, .order-r {
+              font-family: PingFangSC-Regular;
+              font-size: 24px;
+              color: #6D6D6D;
+              display: inline-block;
+              width: 50%;
+              padding: 5px 0;
+            }
+            .order-r {
+              text-align: right;
+            }
+          }
         }
+
+
     }
 
 
